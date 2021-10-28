@@ -105,7 +105,7 @@ public class StudyBaseClass {
     }
 
     public WebElement waitForElement(WebElement element) {
-        WebDriverWait wait = new WebDriverWait(driver, StudyUtils.IMPLICIT_WAIT);
+        WebDriverWait wait = new WebDriverWait(driver,50);
         element = wait.until(ExpectedConditions.elementToBeClickable(element));
         reportLog(element + " is clickable now");
         return element;
