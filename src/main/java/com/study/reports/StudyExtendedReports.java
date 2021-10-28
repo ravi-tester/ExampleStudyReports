@@ -16,7 +16,7 @@ public class StudyExtendedReports implements IReporter {
     private ExtentReports extent;
 
     public void generateReport(List<XmlSuite> xmlSuites, List<ISuite> suites, String outputDirectory) {
-        extent = new ExtentReports(outputDirectory + File.separator + "Example-Case-Study-Report.html", true);
+        extent = new ExtentReports(outputDirectory + File.separator + "TestCase-Execution-Report.html", true);
         for (ISuite suite : suites) {
             Map<String, ISuiteResult> result = suite.getResults();
 

@@ -6,7 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class CaseStudyDashBoardPage extends StudyBaseClass {
-    @FindBy(xpath = "//input[@class='search-input']")
+    @FindBy(xpath = "//a[@class='StudyTitle link']")
     WebElement exampleStudyLink;
 
     public CaseStudyDashBoardPage() {
@@ -16,7 +16,7 @@ public class CaseStudyDashBoardPage extends StudyBaseClass {
     }
 
     public CaseStudyReportsPage selectExampleStudy() {
-        exampleStudyLink.click();
+        clickUsingJs(exampleStudyLink);
         reportLog("Example Study is selected from Case Study Dashboard...");
         return new CaseStudyReportsPage();
     }

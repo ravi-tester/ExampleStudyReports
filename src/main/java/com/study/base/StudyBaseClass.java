@@ -6,14 +6,17 @@ import com.relevantcodes.extentreports.LogStatus;
 import com.study.utils.StudyEventListener;
 import com.study.utils.StudyUtils;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Reporter;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
-
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -31,12 +34,10 @@ public class StudyBaseClass {
     /**
      * Constructor of Base class to initilaize the property file
      */
-
     @BeforeSuite
     public void before() {
-        extent = new ExtentReports("test-output\\ExtentReportWithLogs.html", true);
+        extent = new ExtentReports("test-output\\Example_Case_Study_Report_With_Steps.html", true);
         test = extent.startTest(this.getClass().getSimpleName());
-
     }
 
     public StudyBaseClass() {
@@ -45,7 +46,6 @@ public class StudyBaseClass {
             FileInputStream ip = new FileInputStream(
                     System.getProperty("user.dir") + "\\src\\main\\java\\com\\study\\configs\\config.properties");
             prop.load(ip);
-
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -102,5 +102,17 @@ public class StudyBaseClass {
     public static void reportLog(String message) {
         test.log(LogStatus.INFO, message);// For extentTest HTML report
         Reporter.log(message);
+    }
+
+    public WebElement waitForElement(WebElement element) {
+        WebDriverWait wait = new WebDriverWait(driver, StudyUtils.IMPLICIT_WAIT);
+        element = wait.until(ExpectedConditions.elementToBeClickable(element));
+        reportLog(element + " is clickable now");
+        return element;
+    }
+
+    public void clickUsingJs(WebElement element) {
+        JavascriptExecutor jse = (JavascriptExecutor) driver;
+        jse.executeScript("arguments[0].click()", element);
     }
 }

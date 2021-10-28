@@ -1,18 +1,14 @@
 package com.study.tests;
 
 import com.study.base.StudyBaseClass;
-import com.study.pages.CaseStudyDashBoardPage;
 import com.study.pages.CaseStudyLoginPage;
-import com.study.pages.CaseStudyReportsPage;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class CogTest extends StudyBaseClass {
+public class LoginTest extends StudyBaseClass {
 
     CaseStudyLoginPage caseStudyLoginPage;
-    CaseStudyDashBoardPage caseStudyDashBoardPage;
-    CaseStudyReportsPage caseStudyReportsPage;
     String userName = prop.getProperty("userName");
     String passWd = prop.getProperty("passWd");
 
@@ -21,12 +17,10 @@ public class CogTest extends StudyBaseClass {
         reportLog("======	Test Case Execution Started	======");
         initialization();
         caseStudyLoginPage = new CaseStudyLoginPage();
-        caseStudyDashBoardPage = new CaseStudyDashBoardPage();
-        caseStudyReportsPage = new CaseStudyReportsPage();
     }
 
     @Test
-    public void cogTest_Reports() {
+    public void login_Test() {
         caseStudyLoginPage.loginForCaseStudy(userName, passWd);
     }
 
