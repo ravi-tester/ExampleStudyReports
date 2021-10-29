@@ -8,7 +8,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class ReportsCogOperationsTest extends StudyBaseClass {
+public class RecordsCogOperationsTest extends StudyBaseClass {
 
     CaseStudyLoginPage caseStudyLoginPage;
     CaseStudyDashBoardPage caseStudyDashBoardPage;
@@ -26,18 +26,21 @@ public class ReportsCogOperationsTest extends StudyBaseClass {
     }
 
     @Test
-    public void deleteExistingReports(){
-        caseStudyDashBoardPage =  caseStudyLoginPage.loginForCaseStudy(userName, passWd);
+    public void deleteExistingReports() {
+        caseStudyDashBoardPage = caseStudyLoginPage.loginForCaseStudy(userName, passWd);
         caseStudyDashBoardPage.selectExampleStudy();
         caseStudyReportsPage.deleteSomeRecords();
     }
 
     @Test
-    public void create_New_Report_Test() {
-        caseStudyDashBoardPage =  caseStudyLoginPage.loginForCaseStudy(userName, passWd);
+    public void createNewRecordAndDoGivenCogOperationsTest() {
+        caseStudyDashBoardPage = caseStudyLoginPage.loginForCaseStudy(userName, passWd);
         caseStudyDashBoardPage.selectExampleStudy();
-        caseStudyReportsPage.selectNewReport();
+        caseStudyReportsPage.selectNewRecord();
         caseStudyReportsPage.createNewReportRecord();
+//        caseStudyReportsPage.clickOnGivenSectionCogIcon("", "Consent", "Date of informed consent", "Clear");
+        caseStudyReportsPage.clickOnGivenSectionCogIcon("Baseline", "Physical exam", "Body weight", "User missing");
+//        caseStudyReportsPage.clickOnGivenSectionCogIcon("Follow-up Visit", "Physical exam", "Body weight", "SDV field");
     }
 
     @AfterMethod

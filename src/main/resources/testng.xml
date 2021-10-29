@@ -8,7 +8,7 @@
     <test name="Case Study Test Cases">
         <classes>
             <class name="com.study.tests.LoginTest"/>
-            <class name="com.study.tests.CreateNewReportTest"/>
+            <class name="com.study.tests.CreateNewRecordsTest"/>
         </classes>
     </test>
 </suite>

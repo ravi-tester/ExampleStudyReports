@@ -17,9 +17,11 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Reporter;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.List;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
@@ -105,7 +107,7 @@ public class StudyBaseClass {
     }
 
     public WebElement waitForElement(WebElement element) {
-        WebDriverWait wait = new WebDriverWait(driver,50);
+        WebDriverWait wait = new WebDriverWait(driver, 50);
         element = wait.until(ExpectedConditions.elementToBeClickable(element));
         reportLog(element + " is clickable now");
         return element;
@@ -114,5 +116,14 @@ public class StudyBaseClass {
     public void clickUsingJs(WebElement element) {
         JavascriptExecutor jse = (JavascriptExecutor) driver;
         jse.executeScript("arguments[0].click()", element);
+    }
+
+    public void scrollElementIntoView(WebElement element) {
+        JavascriptExecutor jse = (JavascriptExecutor) driver;
+        jse.executeScript("arguments[0].scrollIntoView();", element);
+    }
+
+    public void selectOption(List<WebElement> elements, int selectOption) {
+        elements.get(selectOption).click();
     }
 }

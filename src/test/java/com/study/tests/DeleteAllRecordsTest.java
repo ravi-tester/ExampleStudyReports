@@ -8,7 +8,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class CreateNewReportTest extends StudyBaseClass {
+public class DeleteAllRecordsTest extends StudyBaseClass {
 
     CaseStudyLoginPage caseStudyLoginPage;
     CaseStudyDashBoardPage caseStudyDashBoardPage;
@@ -26,11 +26,10 @@ public class CreateNewReportTest extends StudyBaseClass {
     }
 
     @Test
-    public void create_New_Report_Test() {
+    public void deleteExistingReports(){
         caseStudyDashBoardPage =  caseStudyLoginPage.loginForCaseStudy(userName, passWd);
         caseStudyDashBoardPage.selectExampleStudy();
-        caseStudyReportsPage.selectNewReport();
-        caseStudyReportsPage.createNewReportRecord();
+        caseStudyReportsPage.deleteSomeRecords();
     }
 
     @AfterMethod
