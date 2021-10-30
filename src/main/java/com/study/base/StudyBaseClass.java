@@ -107,10 +107,17 @@ public class StudyBaseClass {
     }
 
     public WebElement waitForElement(WebElement element) {
-        WebDriverWait wait = new WebDriverWait(driver, 50);
-        element = wait.until(ExpectedConditions.elementToBeClickable(element));
-        reportLog(element + " is clickable now");
-        return element;
+        try{
+            WebDriverWait wait = new WebDriverWait(driver, 20);
+            element = wait.until(ExpectedConditions.elementToBeClickable(element));
+            reportLog(element + " is clickable now");
+            return element;
+        }catch (Exception e){
+            WebDriverWait wait = new WebDriverWait(driver, 20);
+            element = wait.until(ExpectedConditions.elementToBeClickable(element));
+            reportLog(element + " is clickable now");
+            return element;
+        }
     }
 
     public void clickUsingJs(WebElement element) {

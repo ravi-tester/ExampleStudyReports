@@ -1,0 +1,27 @@
+describe('Castor Cog Test',()=> {
+  it('Open Google Page',() => {
+    cy.visit('https://data.castoredc.com/')
+    cy.title().should('contain','Castor EDC - Login')
+    cy.get('input[id="field-username"]').click()
+    cy.get('input[id="field-username"]').type('castoredctest2021@gmail.com')
+    cy.get('input[id="field-password"]').type('123Edc@2021')
+    cy.get('.Button.PrimaryButton').click()
+    cy.wait(100)
+    cy.get('.StudyTitle.link').click()
+    cy.wait(100)
+    cy.get('#create_record_button').click()
+    cy.log("New record created.");
+    cy.wait(300)
+    // cy.get('div.css-1ym6uuo-container div.css-1wazpb5-indicatorContainer svg.css-19bqh2r').click()
+    // cy.get('div.css-1ym6uuo-container div.css-1wazpb5-indicatorContainer svg.css-19bqh2r').click()
+    // cy.get('div.css-1ym6uuo-container.span').contains('Test Institute').click({force : true})
+    // cy.get('div').contains('Test Institute').click({force : true})
+    cy.wait(200)
+    cy.get('div.InputBox-sc-3dkitx-0.fTdXIO input').click()
+    cy.wait(2000)
+    cy.get('div.InputBox-sc-3dkitx-0.fTdXIO input').type("something@some.com")
+    cy.wait(200)
+    cy.get('li.StackItem-sc-1ml846j-0.hVgmHp button.StyledButton-sc-1rtnr17-0.UxzOM').click()
+
+  })
+})
